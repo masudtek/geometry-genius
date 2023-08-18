@@ -4,17 +4,94 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>geometry-genius</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.5.1/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
     <header>
-
+        <ul class="menu menu-horizontal bg-base-200 rounded-box mt-6">
+            <li>
+              <a class="tooltip" data-tip="Home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
+              </a>
+            </li>
+            <li>
+              <a class="tooltip" data-tip="Details">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              </a>
+            </li>
+            <li>
+              <a class="tooltip" data-tip="Stats">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
+              </a>
+            </li>
+          </ul>
+          <h1 class="text-4xl text-center font-semibold text-green-500 ">Welcome to geometry-genius</h1>
     </header>
     <main>
+        <!-- Main container -->
+        <div class="flex mt-8">
+            <!-- card  -->
+            <div class="card-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="card bg-base-100 shadow-xl bg-slate-100">
+                    <figure><img src="/images/triangle.png" alt="triangle" /></figure>
+                    <div class="card-body">
+                      <h2 class="text-3xl text-center">Triangle</h2>
+                      <p class="text-center "> Area (A) = 0.5 X b X h </p>
+                      <p>
+                        <input id="base-Triangle" class="border w-24 bg-gray-200 px-4" type="text" placeholder="base"> <span class="mx-3">cm</span>
+                        <input id="height-triangle" class="border w-24 bg-gray-200 px-4" type="text" placeholder="height"> <span class="mx-3">cm</span>
+                      </p>
+                      <p class="text-2xl">Area: <span class="font-bold" id="area-field"></span>cm <sup>2</sup></p>
+                      <div class="card-actions my-8">
+                        <button onclick="calculateTriangleArea()" class="btn btn-primary w-full">Calculate</button>
+                      </div>
+                    </div>
+                  </div>
+                <div class="card bg-base-100 shadow-xl bg-slate-100">
+                    <figure><img src="/images/rectangle.png" alt="triangle" /></figure>
+                    <div class="card-body">
+                      <h2 class="text-3xl text-center">Rectangle </h2>
+                      <p class="text-center "> Area (A) = 0.5 X w X l </p>
+                      <p>
+                        <input id="width-rectangle" class="border w-24 bg-gray-200 px-4" type="text" placeholder="width"> <span class="mx-3">cm</span>
+                        <input id="length-rectangle" class="border w-24 bg-gray-200 px-4" type="text" placeholder="length"> <span class="mx-3">cm</span>
+                      </p>
+                      <p class="text-2xl">Area: <span class="font-bold" id="rectangle-field">  </span>cm <sup>2</sup></p>
+                      <div class="card-actions my-8">
+                        <button onclick="calculateRectangleArea()" class="btn btn-primary w-full">Calculate</button>
+                      </div>
+                    </div>
+                  </div>
+                <div class="card bg-base-100 shadow-xl bg-slate-100">
+                    <figure><img src="/images/parallelogram.png" alt="triangle" /></figure>
+                    <div class="card-body">
+                      <h2 class="text-3xl text-center">parallelogram </h2>
+                      <p class="text-center "> Area (A) = b X h </p>
+                      <p>
+                        <input id="parallelogram-base" class="border w-24 bg-gray-200 px-4" type="text" placeholder="base"> <span class="mx-3">cm</span>
+                        <input id="parallelogram-height" class="border w-24 bg-gray-200 px-4" type="text" placeholder="height"> <span class="mx-3">cm</span>
+                      </p>
+                      <p class="text-2xl">Area: <span class="font-bold" id="parallelogram-field">  </span>cm <sup>2</sup></p>
+                      <div class="card-actions my-8">
+                        <button onclick="calculateParallelogramArea()" class="btn btn-primary w-full">Calculate</button>
+                      </div>
+                    </div>
+                  </div>
+                
+
+            </div>
+            <div>
+                <h2 class="text-center text-2xl"> Area Calculation</h2>
+            </div>
+
+        </div>
 
     </main>
     <footer>
 
     </footer>
+    <script src="js/area-calculator.js"></script>
     <script src="js/indes.js"></script>
 </body>
 </html>
