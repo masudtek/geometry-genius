@@ -14,6 +14,8 @@ function calculateTriangleArea() {
   areaField.innerText = area;
   baseField.value = "";
   heightField.value = "";
+  addToCalculationsEntry('Triangle', area)
+
 }
 // rectangle area calculation
 
@@ -43,6 +45,8 @@ function calculateRectangleArea() {
   lengthDisplay.innerText = lengthResult;
   widthField.value = "";
   lengthField.value = "";
+  addToCalculationsEntry('Rectangle', lengthResult);
+
 }
 
 // reuseable function ----->>
@@ -57,7 +61,12 @@ function calculateParallelogramArea() {
     return;
   }
   setElementInnerText("parallelogram-field", area);
+
+  // add to calculation entry
+
+  addToCalculationsEntry('Parallelogram', area)
 }
+
 
 // Ellipse
 
@@ -66,6 +75,7 @@ function calculateEllipseArea(){
     const minorRadius = getInputValue('ellipse-minor');
     const ellipseArea = 3.1416 * majorRadius * minorRadius;
     setElementInnerText('ellipse-field', ellipseArea);
+    addToCalculationsEntry('Ellipse', ellipseArea)
 }
 
 // reuseable get
@@ -81,4 +91,17 @@ function getInputValue(fieldId) {
 function setElementInnerText(elementId, area) {
   const element = document.getElementById(elementId);
   element.innerText = area;
+}
+
+
+// add to calculation entry
+
+function addToCalculationsEntry(areaType, area){
+    console.log(areaType +  "  " + area)
+    const calculationEntry = document.getElementById('calculation-entry');
+    const count = calculationEntry.childElementCount;
+    const p = document.createElement('p');
+    p.classList.add('my-4')
+    p.innerHTML = `${count +1}. ${areaType} ${area} cm <sup>2</sup> <button class="btn btn-sm btn-success">Convert</button>`
+    calculationEntry.appendChild(p);
 }
