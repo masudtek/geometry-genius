@@ -1,3 +1,5 @@
+// Triangle area
+
 function calculateTriangleArea() {
   const baseField = document.getElementById("base-Triangle");
   const baseValueText = baseField.value;
@@ -13,15 +15,28 @@ function calculateTriangleArea() {
   baseField.value = "";
   heightField.value = "";
 }
+// rectangle area calculation
 
 function calculateRectangleArea() {
   const widthField = document.getElementById("width-rectangle");
   const widthValueText = widthField.value;
   const width = parseFloat(widthValueText);
+  if(isNaN(width)){
+    alert("Please Insert a Number");
+    return;
+  }
 
   const lengthField = document.getElementById("length-rectangle");
   const lengthValueText = lengthField.value;
   const length = parseFloat(lengthValueText);
+  if(isNaN(length)){
+    alert("Please insert a number");
+    return;
+  }
+  /* if(isNaN(width) || isNaN(length)){
+    alert("Please Insert a Number");
+    return;
+  } */
 
   const lengthResult = 0.5 * width * length;
   const lengthDisplay = document.getElementById("rectangle-field");
@@ -37,6 +52,10 @@ function calculateParallelogramArea() {
   const base = getInputValue("parallelogram-base");
   const height = getInputValue("parallelogram-height");
   const area = base * height;
+  if(isNaN(base) || isNaN(height)){
+    alert("Please insert a Number");
+    return;
+  }
   setElementInnerText("parallelogram-field", area);
 }
 
